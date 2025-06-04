@@ -1,0 +1,102 @@
+﻿<Page x:Class="variant1.Pages.MaterialsListPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:variant1.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MaterialsListPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Image Source="/Recources/Мозаика.png"/>
+        <TextBlock Text="Список материалов"
+                 Grid.Column="1"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="30"/>
+        <Button Grid.Column="3"
+             HorizontalAlignment="Stretch"
+             HorizontalContentAlignment="Center"
+             VerticalContentAlignment="Center"
+             VerticalAlignment="Stretch"
+             Content="Добавить"
+             Margin="30"
+             x:Name="AddProductBtn"
+             Click="AddProductBtn_Click"
+             Background="#546F94 "
+             Foreground="White"
+             FontSize="20"/>
+        <ListView x:Name="MaterialsLv"
+               Grid.ColumnSpan="4"
+               Grid.Row="1"
+               Grid.RowSpan="3"
+               HorizontalAlignment="Stretch" 
+ HorizontalContentAlignment="Stretch"
+ VerticalAlignment="Stretch"
+               SelectionChanged="MaterialsLv_SelectionChanged"
+               VerticalContentAlignment="Stretch"
+               ItemsSource="{Binding materials}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black"
+                         BorderThickness="1"
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Stretch">
+                        <Grid HorizontalAlignment="Stretch"
+                           VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="20 5">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Тип_материала,StringFormat={}Тип: {0}  |   }"
+                                        HorizontalAlignment="Left"
+                                        FontSize="18"/>
+                                    <TextBlock Text="{Binding Наименование_материала,StringFormat={}Наименование: {0}}"
+                                        HorizontalAlignment="Left"
+                                        FontSize="18"/>
+                                </StackPanel>
+                                <TextBlock Text="{Binding Минимальное_количество,StringFormat={}Минимальное количество: {0} кг}"
+                                    HorizontalAlignment="Left"
+                                    FontSize="14"/>
+                                <TextBlock Text="{Binding Количество_на_складе,StringFormat={}Количество на складе: {0} кг}"
+                                    HorizontalAlignment="Left"
+                                    FontSize="14"/>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Left">
+                                    <TextBlock Text="{Binding Цена_единицы_материала,StringFormat={}Цена: {0} р / }"
+     FontSize="14"/>
+                                    <TextBlock Text="{Binding Единица_измерения,StringFormat={} Единица измерения: {0}}"
+     FontSize="14"/>
+                                </StackPanel>
+                               
+                            </StackPanel>
+                            <TextBlock Text="{Binding StoimZak, StringFormat={} Стоимость партии: {0}}"
+                                HorizontalAlignment="Right"
+                                    TextAlignment="Right"
+                                FontSize="18"
+                                Grid.Column="1"
+                                   Margin="20 5"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
