@@ -31,12 +31,13 @@ namespace variant1.Pages
 
         private void AddProductBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddMaterialPage());
         }
 
         private void MaterialsLv_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            var selectionMaterial = MaterialsLv.SelectedItem as Materials_import;
+            NavigationService.Navigate(new Editmaterialpage(selectionMaterial));
         }
     }
 }
